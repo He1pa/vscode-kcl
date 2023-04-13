@@ -8,6 +8,7 @@ import path = require('path');
 import child_process = require("child_process");
 import * as shelljs from 'shelljs';
 
+
 import {
 	Executable,
 	LanguageClient,
@@ -21,6 +22,7 @@ let client: LanguageClient;
 function kcl_rust_lsp_installed(): boolean {
 	return shelljs.which("kcl-language-server") ? true : false;
 }
+
 
 export function activate(context: vscode.ExtensionContext) {
 	const provider1 = vscode.languages.registerCompletionItemProvider('KCL', {
@@ -199,7 +201,14 @@ export function activate(context: vscode.ExtensionContext) {
 		client = new LanguageClient("kcl-language-server", "kcl language server", serverOptions, clientOptions);
 		client.start();
 	} else {
-		vscode.window.showErrorMessage(`KCL language server is not installed. Please check that "kcl" and "kcl-language-server" are installed and have been added to Path as following link: https://kcl-lang.io/docs/user_docs/getting-started/install`);
+		const install = 'Install';
+		vscode.window.showInformationMessage(`Not found kcl-language-server`, ...[install]).then((option) => {
+			if (option === install) {
+				// this will open the Url in your default browser
+				vscode.env.openExternal(vscode.Uri.parse(`https://kcl-lang.io/docs/tools/Ide/vs-code`));
+			}
+		});
+
 		// python ver
 		let kusionPath = process.env['KUSION_PATH'];
 		if (kusionPath == undefined) {
