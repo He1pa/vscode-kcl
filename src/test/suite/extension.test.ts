@@ -38,9 +38,9 @@ suite('Extension Test Suite', function() {
 		// verify there's no pre-installed binary
 		assert.ok(!install.kcl_rust_lsp_location());
 
-		// const installPath = install.getInstallPath(install.KCL_LANGUAGE_SERVER);
-		// fs.rmSync(installPath, {force: true});
-		// assert.ok(!fs.existsSync(installPath));
+		const installPath = install.getInstallPath(install.KCL_LANGUAGE_SERVER);
+		fs.rmSync(installPath, {force: true});
+		assert.ok(!fs.existsSync(installPath));
 	
 		// // verify install success
 		// await install.installLanguageServer(undefined);
