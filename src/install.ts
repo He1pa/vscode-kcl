@@ -227,6 +227,7 @@ async function getLatestRelease(): Promise<string | undefined> {
 	}
 }
 
+
 type ReleaseInfo = {
 	tag_name: string;
 	prerelease: boolean;
