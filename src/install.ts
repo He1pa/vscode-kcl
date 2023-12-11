@@ -70,10 +70,10 @@ export async function installLanguageServer(client: LanguageClient | undefined):
 	// // create .kcl/kpm/bin directory if not exists
 	fs.mkdirSync(KPM_BIN_PATH, { recursive: true });
 
-	// // download binary to install path
-	// if (!await downloadToLocal(downloadUrl, installPath)) {
-	// 	return;
-	// }
+	// download binary to install path
+	if (!await downloadToLocal(downloadUrl, installPath)) {
+		return;
+	}
 
 	// // garantee executable permission
 	// fs.chmodSync(installPath, '755');
