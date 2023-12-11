@@ -50,41 +50,41 @@ export async function promptInstallLanguageServer(client: LanguageClient | undef
 
 
 export async function installLanguageServer(client: LanguageClient | undefined): Promise<string | undefined> {
-	outputChannel.show();
-	outputChannel.clear();
+	// outputChannel.show();
+	// outputChannel.clear();
 
-	const installingMsg = `Installing ${KCL_LANGUAGE_SERVER} to ${KPM_BIN_PATH}`;
-	outputChannel.appendLine(installingMsg);
+	// const installingMsg = `Installing ${KCL_LANGUAGE_SERVER} to ${KPM_BIN_PATH}`;
+	// outputChannel.appendLine(installingMsg);
 
 	// get download url and install path
 	const downloadUrl = await getReleaseURL(KCL_LANGUAGE_SERVER);
-	if (!downloadUrl) {
-		return;
-	}
-	const installPath = getInstallPath(KCL_LANGUAGE_SERVER);
+	// if (!downloadUrl) {
+	// 	return;
+	// }
+	// const installPath = getInstallPath(KCL_LANGUAGE_SERVER);
 
-	// remove old version if exists
-	outputMsg(`2. Removing old version from ${installPath}`);
-	fs.rmSync(installPath, { force: true });
+	// // remove old version if exists
+	// outputMsg(`2. Removing old version from ${installPath}`);
+	// fs.rmSync(installPath, { force: true });
 
-	// create .kcl/kpm/bin directory if not exists
-	fs.mkdirSync(KPM_BIN_PATH, { recursive: true });
+	// // create .kcl/kpm/bin directory if not exists
+	// fs.mkdirSync(KPM_BIN_PATH, { recursive: true });
 
-	// download binary to install path
-	if (!await downloadToLocal(downloadUrl, installPath)) {
-		return;
-	}
+	// // download binary to install path
+	// if (!await downloadToLocal(downloadUrl, installPath)) {
+	// 	return;
+	// }
 
-	// garantee executable permission
-	fs.chmodSync(installPath, '755');
+	// // garantee executable permission
+	// fs.chmodSync(installPath, '755');
 
-	// separate line
-	outputMsg('');
+	// // separate line
+	// outputMsg('');
 
-	if (client) {
-		client.restart();
-	}
-	return installPath;
+	// if (client) {
+	// 	client.restart();
+	// }
+	return '';
 }
 
 export async function downloadToLocal(releaseURL: string, installPath: string): Promise<boolean> {
