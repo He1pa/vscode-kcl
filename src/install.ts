@@ -64,11 +64,11 @@ export async function installLanguageServer(client: LanguageClient | undefined):
 	const installPath = getInstallPath(KCL_LANGUAGE_SERVER);
 
 	// // remove old version if exists
-	// outputMsg(`2. Removing old version from ${installPath}`);
-	// fs.rmSync(installPath, { force: true });
+	outputMsg(`2. Removing old version from ${installPath}`);
+	fs.rmSync(installPath, { force: true });
 
 	// // create .kcl/kpm/bin directory if not exists
-	// fs.mkdirSync(KPM_BIN_PATH, { recursive: true });
+	fs.mkdirSync(KPM_BIN_PATH, { recursive: true });
 
 	// // download binary to install path
 	// if (!await downloadToLocal(downloadUrl, installPath)) {
