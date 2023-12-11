@@ -10,7 +10,7 @@ import * as vscode from 'vscode';
 
 suite('Extension Test Suite', function() {
 	vscode.window.showInformationMessage('Start all tests.');
-	this.timeout(1000000);
+	this.timeout(100000);
 
 	test('Sample test', () => {
 		assert.strictEqual(-1, [1, 2, 3].indexOf(5));
