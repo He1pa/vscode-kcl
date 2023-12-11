@@ -36,7 +36,7 @@ suite('Extension Test Suite', function() {
 	test('installation e2e test', async () => {
 		
 		// verify there's no pre-installed binary
-		// assert.ok(!install.kcl_rust_lsp_location());
+		assert.ok(!install.kcl_rust_lsp_location());
 
 		// const installPath = install.getInstallPath(install.KCL_LANGUAGE_SERVER);
 		// fs.rmSync(installPath, {force: true});
