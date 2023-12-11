@@ -58,10 +58,10 @@ export async function installLanguageServer(client: LanguageClient | undefined):
 
 	// get download url and install path
 	const downloadUrl = await getReleaseURL(KCL_LANGUAGE_SERVER);
-	// if (!downloadUrl) {
-	// 	return;
-	// }
-	// const installPath = getInstallPath(KCL_LANGUAGE_SERVER);
+	if (!downloadUrl) {
+		return;
+	}
+	const installPath = getInstallPath(KCL_LANGUAGE_SERVER);
 
 	// // remove old version if exists
 	// outputMsg(`2. Removing old version from ${installPath}`);
@@ -84,7 +84,7 @@ export async function installLanguageServer(client: LanguageClient | undefined):
 	// if (client) {
 	// 	client.restart();
 	// }
-	return '';
+	return installPath;
 }
 
 export async function downloadToLocal(releaseURL: string, installPath: string): Promise<boolean> {
