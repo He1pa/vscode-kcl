@@ -43,7 +43,7 @@ suite('Extension Test Suite', function() {
 		assert.ok(!fs.existsSync(installPath));
 	
 		// // verify install success
-		// await install.installLanguageServer(undefined);
+		await install.installLanguageServer(undefined);
 		// assert.ok(fs.existsSync(installPath), `failed to download binary for ${os.type()}-${os.arch()}`);
 
 		// todo: check the downloaded binary is executable on current os
